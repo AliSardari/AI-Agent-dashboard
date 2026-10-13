@@ -1,0 +1,54 @@
+{
+  "name": "ai-usage-dashboard",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "description": "A modern, bilingual (fa/en) dashboard for monitoring AI model usage, built with React, TypeScript, Tailwind CSS v4 and Recharts.",
+  "license": "MIT",
+  "author": "Ali Sardari",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AliSardari/AI-Agent-dashboard.git"
+  },
+  "bugs": {
+    "url": "https://github.com/AliSardari/AI-Agent-dashboard/issues"
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc --noEmit && vite build",
+    "preview": "vite preview",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint .",
+    "test": "vitest run",
+    "test:watch": "vitest"
+  },
+  "dependencies": {
+    "@fontsource-variable/inter": "^5.3.0",
+    "@fontsource-variable/vazirmatn": "^5.3.0",
+    "@tailwindcss/vite": "^4.3.0",
+    "clsx": "^2.1.1",
+    "lucide-react": "^1.14.0",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
+    "react-router-dom": "^7.15.0",
+    "recharts": "^3.8.1",
+    "tailwindcss": "^4.3.0"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.25.0",
+    "@testing-library/jest-dom": "^6.6.3",
+    "@testing-library/react": "^16.3.0",
+    "@types/react": "^19.1.2",
+    "@types/react-dom": "^19.1.2",
+    "@vitejs/plugin-react": "^4.4.1",
+    "eslint": "^9.25.0",
+    "eslint-plugin-react-hooks": "^5.2.0",
+    "eslint-plugin-react-refresh": "^0.4.19",
+    "globals": "^16.0.0",
+    "jsdom": "^26.1.0",
+    "typescript": "^5.8.0",
+    "typescript-eslint": "^8.30.0",
+    "vite": "^6.3.5",
+    "vitest": "^3.2.0"
+  }
+}

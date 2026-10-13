@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="AI Usage Dashboard — bilingual (fa/en, RTL/LTR) dashboard for monitoring AI model usage, cost and latency."
+    />
+    <meta name="theme-color" content="#fafafa" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#09090b" media="(prefers-color-scheme: dark)" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="AI Usage Dashboard" />
+    <meta
+      property="og:description"
+      content="Bilingual (fa/en, RTL/LTR) dashboard for monitoring AI model usage, cost and latency — React 19, TypeScript, Tailwind CSS v4, Recharts."
+    />
+    <meta property="og:image" content="/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="AI Usage Dashboard" />
+    <meta
+      name="twitter:description"
+      content="Bilingual (fa/en, RTL/LTR) dashboard for monitoring AI model usage, cost and latency."
+    />
+    <meta name="twitter:image" content="/og-image.png" />
+    <title>AI Usage Dashboard</title>
+    <script>
+      // Apply the persisted theme and locale before first paint to avoid a flash.
+      (function () {
+        try {
+          var theme = localStorage.getItem("aud.theme");
+          if (theme !== "light" && theme !== "dark") {
+            // Respect the OS preference on first visit, like ThemeProvider does.
+            theme =
+              window.matchMedia &&
+              window.matchMedia("(prefers-color-scheme: light)").matches
+                ? "light"
+                : "dark";
+          }
+          var lang = localStorage.getItem("aud.lang") || "en";
+          document.documentElement.classList.toggle("dark", theme === "dark");
+          document.documentElement.lang = lang;
+          document.documentElement.dir = lang === "fa" ? "rtl" : "ltr";
+        } catch (e) {
+          /* storage unavailable — keep defaults */
+        }
+      })();
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

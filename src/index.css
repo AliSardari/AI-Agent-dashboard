@@ -1,0 +1,107 @@
+@import "tailwindcss";
+
+/* Class-based dark mode, toggled on <html> by the theme provider. */
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  /* Brand — a violet scale with a cyan accent, used for actions and gradients. */
+  --color-brand-50: #f4f1ff;
+  --color-brand-100: #ebe5ff;
+  --color-brand-200: #d9cfff;
+  --color-brand-300: #bdabff;
+  --color-brand-400: #9d80ff;
+  --color-brand-500: #8b5cf6;
+  --color-brand-600: #7c3aed;
+  --color-brand-700: #6d28d9;
+  --color-brand-800: #5b21b6;
+  --color-brand-900: #4c1d95;
+  --color-brand-950: #2e1065;
+
+  /* Chart palette — referenced by Recharts as var(--color-chart-N). */
+  --color-chart-1: #8b5cf6;
+  --color-chart-2: #06b6d4;
+  --color-chart-3: #f59e0b;
+  --color-chart-4: #10b981;
+  --color-chart-5: #f43f5e;
+
+  --font-sans: var(--app-font-sans);
+
+  --shadow-card: 0 1px 2px 0 rgb(0 0 0 / 0.04), 0 1px 3px 0 rgb(0 0 0 / 0.03);
+}
+
+:root {
+  --app-font-sans: "Inter Variable", ui-sans-serif, system-ui, -apple-system,
+    "Segoe UI", Roboto, sans-serif;
+}
+
+/* Persian gets Vazirmatn first; Latin numerals still fall back to Inter. */
+html[lang="fa"] {
+  --app-font-sans: "Vazirmatn Variable", "Inter Variable", ui-sans-serif,
+    Tahoma, sans-serif;
+}
+
+@layer base {
+  html {
+    -webkit-tap-highlight-color: transparent;
+    scrollbar-color: rgb(161 161 170 / 0.5) transparent;
+  }
+
+  body {
+    @apply bg-zinc-50 text-zinc-900 antialiased dark:bg-zinc-950 dark:text-zinc-100;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  }
+
+  ::selection {
+    @apply bg-brand-500/25;
+  }
+
+  * {
+    scrollbar-width: thin;
+  }
+
+  *::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  *::-webkit-scrollbar-thumb {
+    @apply rounded-full bg-zinc-300 dark:bg-zinc-700;
+  }
+
+  *::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  :focus-visible {
+    @apply outline-none ring-2 ring-brand-500/60 ring-offset-2 ring-offset-white dark:ring-offset-zinc-950;
+  }
+}
+
+@layer components {
+  .card {
+    @apply rounded-xl border border-zinc-200 bg-white shadow-card dark:border-zinc-800 dark:bg-zinc-900;
+  }
+
+  .gradient-text {
+    @apply bg-gradient-to-r from-brand-500 to-cyan-400 bg-clip-text text-transparent;
+  }
+}
+
+/*
+ * Mobile drawer: translated off-canvas below lg. Written as plain CSS (not
+ * utilities) so the RTL direction cannot be overridden by variant ordering —
+ * `translate` is a physical property, hence the explicit [dir] rule.
+ */
+@media (max-width: 1023px) {
+  .sidebar[data-sidebar-state="closed"] {
+    translate: -100% 0;
+  }
+
+  [dir="rtl"] .sidebar[data-sidebar-state="closed"] {
+    translate: 100% 0;
+  }
+
+  .sidebar[data-sidebar-state="open"] {
+    translate: 0 0;
+  }
+}
